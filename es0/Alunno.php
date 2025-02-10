@@ -39,7 +39,7 @@
 
             //stampa 
             public function stampa() {
-                echo "Nome: {this->nome} , Cognome: {this->cognome}, Età: {this->eta}";
+                echo "Nome: {$this->nome} , Cognome: {$this->cognome}, Età: {$this->eta}";
             }
 
         }

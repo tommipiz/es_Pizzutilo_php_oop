@@ -27,7 +27,7 @@
         $alunni  = [$alunno1, $alunno2, $alunno3];
 
         foreach ($alunni as $alunno) {
-            $alunno->$stampa();
+            $alunno->stampa();
         }
 
     
