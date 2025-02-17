@@ -1,38 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
-</head>
-<body>
+
     <?php
-        require_once 'Alunno.php';
+        header("content-type: application/json");
 
-        $alunno1 = new Alunno();
-        $alunno1 ->setNome("Mario");
-        $alunno1 ->setCognome("Rossi");
-        $alunno1 ->setEta(18);
+        require 'Alunno.php';
 
-        $alunno2 = new Alunno();
-        $alunno2 ->setNome("Tommaso");
-        $alunno2 ->setCognome("Martini");
-        $alunno2 ->setEta(18);
+        $alunno1 = new Alunno("Mario","Rossi", 14);
+        $alunno2 = new Alunno("Giuseppe","Costantini", 18);
+        $alunno3 = new Alunno("Giacomo","Pietrini", 19);
+        $alunni  = array($alunno1, $alunno2, $alunno3);
 
-        $alunno3 = new Alunno();
-        $alunno3 ->setNome("Giuseppe");
-        $alunno3 ->setCognome("giustini");
-        $alunno3 ->setEta(18);
+        $json = json_encode($alunni);
+        $alunni2 = json_decode($json, true);
 
-        $alunni  = [$alunno1, $alunno2, $alunno3];
-
-        foreach ($alunni as $alunno) {
-            $alunno->stampa();
+        foreach($alunni2 as $al) {
+            $a = new Alunno($al['nome'], $al['cognome'], $al['eta']);
+            $alunni [] = $a;
         }
-
-    
+        echo json_encode($alunni);
 
     ?>
-    
-</body>
-</html>
